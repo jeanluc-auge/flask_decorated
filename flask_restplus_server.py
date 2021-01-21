@@ -60,13 +60,12 @@ secret_client = LcdnSecretClient()
 #         )
 #         endpoint_class = getattr(namespace, 'route')(endpoint_name)(endpoint_class)
 
-
 endpoint_class = type(
     "Provider_account",
     (Resource,),
     {
         "get": api.doc(description=contentd_client.get_content_provider.__doc__)(
-            lambda account: contentd_client.get_content_provider(account)
+            lambda self, account: contentd_client.get_content_provider(account)
         )
     },
 )
